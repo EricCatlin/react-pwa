@@ -21,7 +21,7 @@ This pattern has proven quite useful during development of this POC:
 ### `npm run build`
 ### `serve -s build`
 ### `ngrok  http 5000`
-
+--------------------------
 ### `npm start` 
 works fine for local testig of app itself. 
 You only need to run service workers when testing offline capabilities
