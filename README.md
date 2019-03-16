@@ -1,6 +1,6 @@
 > react-pwa 
 
-Demosntrates a Progressive Web App capable of running offline, creating desktop launchers, and persisting state locally.
+Demonstrates a Progressive Web App capable of running offline, creating desktop launchers, and persisting state locally.
 
 Bootstrapped using create-react-app, so all typical CRA scripts apply
 ## Available Scripts
