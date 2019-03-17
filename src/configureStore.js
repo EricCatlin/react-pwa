@@ -22,7 +22,8 @@ export default function configureStore(preloadedState) {
   const middlewares = applyMiddleware(middleware);
   const enhancers = compose(
     enhancer,
-    middlewares
+    middlewares,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 
   const store = createStore(rootReducer, preloadedState, enhancers);
