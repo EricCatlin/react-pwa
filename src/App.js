@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { NotFound, NavBar, Footer } from './components';
 import { User, Home } from './RoutedComponents';
 
-import { Container } from 'semantic-ui-react';
+import { Container , Segment} from 'semantic-ui-react';
 
 
 
@@ -16,7 +16,8 @@ const App = ({ page }) => {
   return (
     <div>
       <NavBar />
-      <Container text style={{ marginTop: '7em', minHeight: '90vh' }}>
+      
+      <Container style={{ marginTop: '7em', minHeight: '90vh' }}>
         <Component />
       </Container>
       <Footer />

@@ -2,7 +2,7 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { connectRoutes } from 'redux-first-router';
 
 import page from './pageReducer';
-import homeReducer from './RoutedComponents/Home/reducers';
+import { persistentHomeFormReducer, impersistentHomeFormReducer } from './RoutedComponents/Home/reducers';
 import { saveState } from './localSaveState';
 import throttle from 'lodash/throttle';
 
@@ -17,7 +17,8 @@ export default function configureStore(preloadedState) {
   const rootReducer = combineReducers({
     page,
     location: reducer,
-    searched: homeReducer
+    persistentHomeFormReducer,
+    impersistentHomeFormReducer
   });
   const middlewares = applyMiddleware(middleware);
   const enhancers = compose(
@@ -29,14 +30,14 @@ export default function configureStore(preloadedState) {
   const store = createStore(rootReducer, preloadedState, enhancers);
 
   // throttledSaveState will save state only once per second if an action has occured during that second
-  const throttledSaveState = throttle( ()=> 
-    saveState({
-      ...store.getState()
-    }),
+  const throttledSaveState = throttle(
+    () =>
+      saveState({
+        persistentHomeFormReducer: store.getState().persistentHomeFormReducer
+      }),
     1000
   );
-  store.subscribe(()=>throttledSaveState());
-  
+  store.subscribe(() => throttledSaveState());
 
   return { store };
 }
