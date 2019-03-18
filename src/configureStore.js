@@ -2,7 +2,10 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { connectRoutes } from 'redux-first-router';
 
 import page from './pageReducer';
-import { persistentHomeFormReducer, impersistentHomeFormReducer } from './RoutedComponents/Home/reducers';
+import {
+  persistentHomeFormReducer,
+  impersistentHomeFormReducer
+} from './RoutedComponents/Home/reducers';
 import { saveState } from './localSaveState';
 import throttle from 'lodash/throttle';
 
@@ -11,7 +14,7 @@ const routesMap = {
   USER: '/user'
 };
 
-export default function configureStore(preloadedState) {
+export default function configureStore(preloadedState = {}) {
   const { reducer, middleware, enhancer } = connectRoutes(routesMap);
 
   const rootReducer = combineReducers({
@@ -23,8 +26,8 @@ export default function configureStore(preloadedState) {
   const middlewares = applyMiddleware(middleware);
   const enhancers = compose(
     enhancer,
-    middlewares,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    middlewares
+    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 
   const store = createStore(rootReducer, preloadedState, enhancers);

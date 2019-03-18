@@ -5,7 +5,6 @@ const History = () => (
   <div>
     <h3>History</h3>
     <br />
-    <Input placeholder="Search..." />
   </div>
 );
 

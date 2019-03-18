@@ -11,7 +11,8 @@ const Home = props => {
     persistentHomeForm,
     impersistentHomeForm,
     updatePersistentForm,
-    updateImpersistentForm
+    updateImpersistentForm,
+    resetPersistentForm
   } = props;
   return (
     <div>
@@ -54,15 +55,33 @@ const Home = props => {
                 <Grid.Column width={11}>
                   <Button
                     onClick={() =>
-                      updatePersistentForm(
-                        'inverted',
-                        !persistentHomeForm.inverted
-                      )
-                    }
+                        updatePersistentForm(
+                            'inverted',
+                            !persistentHomeForm.inverted
+                            )
+                        }
                     inverted={persistentHomeForm.inverted}
                     color={persistentHomeForm.inverted ? 'yellow' : null}
                   >
                     Toggle Lights
+                  </Button>
+                </Grid.Column>
+              </Grid.Row>
+                        <Grid.Row />
+                        <Grid.Row />
+              <Grid.Row>
+                <Grid.Column width={5}>
+                  <Header inverted={persistentHomeForm.inverted} as="h4">
+                    Reset state
+                  </Header>
+                </Grid.Column>
+                <Grid.Column width={11}>
+                  <Button
+                    onClick={resetPersistentForm}
+                    inverted={persistentHomeForm.inverted}
+                    color={persistentHomeForm.inverted ? 'yellow' : null}
+                  >
+                    Reset
                   </Button>
                 </Grid.Column>
               </Grid.Row>
@@ -168,6 +187,11 @@ function mapDispatchToProps(dispatch) {
       return dispatch({
         type: 'IMPERSISTENT_HOME_FORM_CHANGED',
         payload: { [key]: value }
+      });
+    },
+    resetPersistentForm: (key, value) => {
+      return dispatch({
+        type: 'PERSISTENT_HOME_FORM_RESET'
       });
     }
   };

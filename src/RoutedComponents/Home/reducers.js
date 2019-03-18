@@ -6,10 +6,10 @@ const persistentHomeFormReducer = (
 ) => {
   switch (action.type) {
     case 'PERSISTENT_HOME_FORM_CHANGED':
-      const { payload } = action;
-      console.log(payload);
-      const newState = Object.assign({}, state, payload);
-      return newState;
+      return Object.assign({}, state, action.payload);
+    case 'PERSISTENT_HOME_FORM_RESET':
+      return Object.assign({}, initialState);
+
     default:
       return state;
   }
@@ -22,7 +22,6 @@ const impersistentHomeFormReducer = (
   switch (action.type) {
     case 'IMPERSISTENT_HOME_FORM_CHANGED':
       const { payload } = action;
-      console.log(payload);
       const newState = Object.assign({}, state, payload);
       return newState;
     default:
