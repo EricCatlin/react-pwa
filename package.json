@@ -55,7 +55,6 @@
     "react": "^16.8.4",
     "react-animate-height": "^2.0.9",
     "react-app-polyfill": "^0.2.2",
-    "react-component-library": "^1.0.1",
     "react-dev-utils": "^8.0.0",
     "react-dom": "^16.8.4",
     "react-focus-lock": "^2.0.3",
