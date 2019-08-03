@@ -1,0 +1,12 @@
+dist/*
+lib/*
+static/*
+coverage/*
+server/build/*
+node_modules/*
+**/*.test.js
+**/*.spec.js
+frontend/scripts
+frontend/config
+frontend/build
+docs
