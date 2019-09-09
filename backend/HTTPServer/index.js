@@ -6,14 +6,14 @@ const server = http.createServer(app);
 
 // Http Event handlers
 const HttpListenError = error => {
-  logger.error('server_initialization_failure');
+  console.error('server_initialization_failure');
   process.exit(1);
   throw error;
 };
 
 const HttpListenSuccess = () => {
   const { address, port, family } = server.address();
-  logger.info(
+  console.info(
     'server_initialized',
     `NODE_ENV: ${
       process.env.NODE_ENV
